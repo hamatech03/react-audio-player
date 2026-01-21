@@ -1,11 +1,36 @@
+import './App.css'
 import { useState, useRef } from "react"
+import { FaPlay, FaPause } from 'react-icons/fa';
 
 function App() {
-  //Hooks
   //audio
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  //再生or停止
+  //トラックリスト
+  type Track = {
+    id: number;
+    title: string;
+    src: string;
+  }
+
+  const playlist: Track[] = [
+    {
+      id:1,
+      title:"(01)",
+      src: "/music/(01)_master_128kbps.mp3"
+    },
+    {
+      id:2,
+      title:"(02)",
+      src: "/music/(01)_master_128kbps.mp3"
+    },
+    
+  ]
+
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const currentTrack = playlist[currentTrackIndex];
+
+  //再生しているかor停止しているか
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   //現在の再生時間
@@ -14,22 +39,43 @@ function App() {
   //曲の長さ
   const [duration, setDuration] = useState<number>(0);
 
-  //再生ボタン
-  const handlePlay = () => {
+  // //再生ボタン
+  // const handlePlay = () => {
 
-    //audioRef.currentがnullのときtrue判定になりreturnが実行される。
+  //   if(!audioRef.current) return;
+
+  //   audioRef.current.play();
+  //   setIsPlaying(true);
+  // }
+
+  // //停止ボタン
+  // const handlePause = () => {
+  //   if(!audioRef.current) return;
+
+  //   audioRef.current.pause();
+  //   setIsPlaying(false);
+  // }
+
+  const handleTogglePlay= () => {
     if(!audioRef.current) return;
 
-    audioRef.current.play();
-    setIsPlaying(true);
+    if(isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }else {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
   }
 
-  //停止ボタン
-  const handlePause = () => {
-    if(!audioRef.current) return;
-
-    audioRef.current.pause();
+  //楽曲が終了した後のリセットハンドル
+  const handleEnded = () => {
     setIsPlaying(false);
+    setCurrentTime(0);
+
+    if(audioRef.current) {
+      audioRef.current.currentTime = 0;
+    }
   }
 
   //再生時間更新
@@ -55,6 +101,18 @@ function App() {
     setCurrentTime(time);
   }
 
+  //曲を選択
+  const handleSelectTrack = (index: number) => {
+    if(!audioRef.current) return;
+
+    setCurrentTrackIndex(index);
+    setCurrentTime(0);
+    setIsPlaying(false);
+
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+  }
+
   //秒を00:00表示に変換
   const formatTime  = (time: number): string => {
     const minutes = Math.floor(time / 60);
@@ -73,9 +131,14 @@ function App() {
     </div>
 
       <audio ref={audioRef} 
-      src="/music/(01)_master_128kbps.mp3" 
+      src={currentTrack.src} 
       onTimeUpdate={handleTimeUpdate}
-      onLoadedMetadata={handleLoadedMetadata}/>
+      onLoadedMetadata={handleLoadedMetadata}
+      onEnded={handleEnded} />
+
+      <div className={`record ${isPlaying ? "spinning" : ""}`}>
+        <img src="/images/meimg.png" alt="record" />
+      </div>
 
       <div>
         <input type="range" 
@@ -86,13 +149,28 @@ function App() {
         onChange={handleSeek}/>
       </div>
 
-      <p>
-        {formatTime(currentTime)} / {formatTime(duration)} (残り {formatTime(remainingTime)})
-      </p>
+    <div className="time">
+      <p>{formatTime(currentTime)}</p>
+      <p>-{formatTime(remainingTime)}</p>
+    </div>
 
     <div>
-      <button onClick={handlePlay} disabled={isPlaying}>再生</button>
-      <button onClick={handlePause} disabled={!isPlaying}>停止</button>
+      <button onClick={handleTogglePlay}>
+        {isPlaying ? <FaPause /> : <FaPlay />}
+      </button>
+    </div>
+
+    <div>
+      <ul>
+        {playlist.map((track, index) => (
+          <li key={track.id}>
+
+            <button onClick={() => handleSelectTrack(index)}
+              disabled={index === currentTrackIndex}>{track.title}
+              </button>
+          </li>
+        ))}
+      </ul>
     </div>
 
     </>
