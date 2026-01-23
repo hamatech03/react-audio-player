@@ -39,23 +39,7 @@ function App() {
   //曲の長さ
   const [duration, setDuration] = useState<number>(0);
 
-  // //再生ボタン
-  // const handlePlay = () => {
-
-  //   if(!audioRef.current) return;
-
-  //   audioRef.current.play();
-  //   setIsPlaying(true);
-  // }
-
-  // //停止ボタン
-  // const handlePause = () => {
-  //   if(!audioRef.current) return;
-
-  //   audioRef.current.pause();
-  //   setIsPlaying(false);
-  // }
-
+  //再生ボタン
   const handleTogglePlay= () => {
     if(!audioRef.current) return;
 
@@ -125,10 +109,10 @@ function App() {
 
   return (
     <>
-    <div>
+    <header className='header'>
       <h1>music-player</h1>
       <p>make by Ichiro Hamasaki</p>
-    </div>
+    </header>
 
       <audio ref={audioRef} 
       src={currentTrack.src} 
@@ -141,7 +125,7 @@ function App() {
       </div>
 
       <div>
-        <input type="range" 
+        <input className='seek' type="range" 
         min={0} 
         max={duration || 0} 
         step={0.1}
@@ -151,17 +135,21 @@ function App() {
 
     <div className="time">
       <p>{formatTime(currentTime)}</p>
-      <p>-{formatTime(remainingTime)}</p>
-    </div>
 
-    <div>
+    <div className='toggleplay'>
       <button onClick={handleTogglePlay}>
         {isPlaying ? <FaPause /> : <FaPlay />}
       </button>
     </div>
 
-    <div>
-      <ul>
+      <p>-{formatTime(remainingTime)}</p>
+    </div>
+
+
+    <h3>playlist</h3>
+
+    <div className='playlistCard'>
+      <ul className='playlist'>
         {playlist.map((track, index) => (
           <li key={track.id}>
 
