@@ -111,7 +111,9 @@ function App() {
     <>
     <header className='header'>
       <h1>music-player</h1>
-      <p>make by Ichiro Hamasaki</p>
+      <p>make by Ichiro Hamasaki<br/>
+      composer by Ichiro Hamasaki
+      </p>
     </header>
 
       <audio ref={audioRef} 
@@ -122,6 +124,10 @@ function App() {
 
       <div className={`record ${isPlaying ? "spinning" : ""}`}>
         <img src="/images/meimg.png" alt="record" />
+      </div>
+
+      <div className='track-title'>
+        {currentTrack.title}
       </div>
 
       <div>
@@ -147,14 +153,21 @@ function App() {
 
 
     <h3>playlist</h3>
+    <div className='playlistInfoText'>
+    <p>Select a song</p>
+    <p>(mp3 - 128kbps)</p>
+    </div>
 
     <div className='playlistCard'>
       <ul className='playlist'>
+        
         {playlist.map((track, index) => (
           <li key={track.id}>
 
             <button onClick={() => handleSelectTrack(index)}
-              disabled={index === currentTrackIndex}>{track.title}
+              className={index === currentTrackIndex ? "active" : ""}
+              >
+                {track.title}
               </button>
           </li>
         ))}
