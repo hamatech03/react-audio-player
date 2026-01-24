@@ -174,7 +174,7 @@ function App() {
         onChange={handleSeek}/>
       </div>
 
-    <div className="time">
+  <div className="time">
       <p>{formatTime(currentTime)}</p>
 
     <div className='toggleplay'>
@@ -184,13 +184,14 @@ function App() {
     </div>
 
       <p>-{formatTime(remainingTime)}</p>
-    </div>
+  </div>
 
 
     <h3>playlist</h3>
+
     <div className='playlistInfoText'>
-    <p>Select a song</p>
-    <p>(mp3 - 128kbps)</p>
+      <p>Select a song</p>
+      <p>(mp3 - 128kbps)</p>
     </div>
 
     <div className='playlistCard'>
@@ -200,10 +201,10 @@ function App() {
           <li key={track.id}>
 
             <button onClick={() => handleSelectTrack(index)}
-              className={index === currentTrackIndex ? "active" : ""}
-              >
+              className={index === currentTrackIndex ? "active" : ""}>
                 {track.title}
               </button>
+
           </li>
         ))}
       </ul>
