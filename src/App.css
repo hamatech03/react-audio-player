@@ -47,7 +47,7 @@
     margin: 0;
 }
 
-.playlistCard {
+.playlist-wrapper {
     margin-top: 0;
 
     max-height: 200px;
@@ -62,20 +62,20 @@
 
 }
 
-.playlistCard::-webkit-scrollbar {
+.playlist-wrapper::-webkit-scrollbar {
     width: 6px;
 }
 
-.playlistCard::-webkit-scrollbar-track {
+.playlist-wrapper::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.playlistCard::-webkit-scrollbar-thumb {
+.playlist-wrapper::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.25);
     border-radius: 4px;
 }
 
-.playlistCard::-webkit-scrollbar-thumb:hover {
+.playlist-wrapper::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.4);
 }
 

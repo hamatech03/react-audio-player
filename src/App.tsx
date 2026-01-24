@@ -194,7 +194,7 @@ function App() {
       <p>(mp3 - 128kbps)</p>
     </div>
 
-    <div className='playlistCard'>
+    <div className='playlist-wrapper'>
       <ul className='playlist'>
         
         {playlist.map((track, index) => (
