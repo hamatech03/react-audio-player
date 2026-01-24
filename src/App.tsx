@@ -11,20 +11,52 @@ function App() {
     id: number;
     title: string;
     src: string;
+    loop: boolean;
   }
 
   const playlist: Track[] = [
     {
       id:1,
       title:"(01)",
-      src: "/music/(01)_master_128kbps.mp3"
+      src: "/music/(01)_master_128kbps.mp3",
+      loop: false,
     },
     {
       id:2,
-      title:"(02)",
-      src: "/music/(01)_master_128kbps.mp3"
+      title:"サッカーゲームBGM (loop)",
+      src: "/music/サッカーゲームBGMmaster_128kbps.mp3",
+      loop: true,
     },
-    
+    {
+      id:3,
+      title:"チュートリアルBGM (loop)",
+      src: "/music/チュートリアルmaster_128kbps.mp3",
+      loop: true,
+    },
+    {
+      id:4,
+      title:"砂浜ステージBGM (loop)",
+      src: "/music/砂浜ステージBGMmaster_128kbps.mp3",
+      loop: true,
+    },
+    {
+      id:5,
+      title:"管理者ステージBGM (loop)",
+      src: "/music/管理者ステージBGMmaster_128kbps.mp3",
+      loop: true,
+    },
+    {
+      id:6,
+      title:"宇宙のボスのテーマBGM (loop)",
+      src: "/public/music/宇宙のボスのテーマBGMmaster_128kbps.mp3",
+      loop: true,
+    },
+    {
+      id:7,
+      title:"天空ステージBGM (loop)",
+      src: "/music/天空ステージBGMmaster_128kbps.mp3",
+      loop: true,
+    },
   ]
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
@@ -118,6 +150,7 @@ function App() {
 
       <audio ref={audioRef} 
       src={currentTrack.src} 
+      loop={currentTrack.loop}
       onTimeUpdate={handleTimeUpdate}
       onLoadedMetadata={handleLoadedMetadata}
       onEnded={handleEnded} />
@@ -126,9 +159,11 @@ function App() {
         <img src="/images/meimg.png" alt="record" />
       </div>
 
-      <div className='track-title'>
-        {currentTrack.title}
-      </div>
+
+        <div className='track-title'>
+          {currentTrack.title}
+        </div>
+
 
       <div>
         <input className='seek' type="range" 

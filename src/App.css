@@ -50,9 +50,34 @@
 .playlistCard {
     margin-top: 0;
 
+    max-height: 200px;
+    overflow-y: auto;
+
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 16px;
     box-shadow: 0 10px 20px rgba(26, 24, 24, 0.3);
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+
+}
+
+/* スクロールバー設定 */
+.playlistCard::-webkit-scrollbar {
+    width: 6px;
+}
+
+.playlistCard::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.playlistCard::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+}
+
+.playlistCard::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .playlist {
@@ -68,10 +93,20 @@
     border: none;
 
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1rem;
     opacity: 0.7;
     cursor: pointer;
 }
+
+.playlist li button:hover {
+    opacity: 1;
+    transform: translateX(5px)
+}
+
+.playlist li button:active {
+    transform: scale(0.98);
+}
+
 
 .playlist li button.active::after {
     content: "♪";
@@ -88,8 +123,11 @@
     font-size: 1rem;
 }
 
+
+
 .seek {
     width: 100%;
+    height: 4px;
     margin-top: 30px;
 }
 
@@ -118,12 +156,12 @@
 }
 
 
+
 .track-title {
-    text-align: center;
+    text-align:center;
     margin-top: 40px;
     font-size: 1.5rem;
     font-weight:700;
-    letter-spacing: 0.05em;
     opacity: 0.9;
 }
 
