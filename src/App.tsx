@@ -210,6 +210,14 @@ function App() {
       </ul>
     </div>
 
+  <div className='links'>
+    <h5>link</h5>
+      <ul>
+        <li><a href="#" target='_blank' rel="noopener noreferrer">soundcloud</a></li>
+        <li><a href="#" target='_blank' rel="noopener noreferrer">github</a></li>
+      </ul>
+  </div>
+
     </>
   )
 }

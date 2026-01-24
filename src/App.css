@@ -164,6 +164,34 @@
     opacity: 0.9;
 }
 
+.links {
+    color: white;
+}
+
+.links h5 {
+    margin-bottom: 0;
+}
+
+.links ul {
+    margin-top: 0;
+}
+
+.links ul li {
+    list-style: none;
+    margin-left: 10px;
+}
+
+.links ul li:active {
+    transform: scale(0.98);
+}
+
+.links ul li a {
+    color: white;
+    font-size: small;
+}
+
+
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
