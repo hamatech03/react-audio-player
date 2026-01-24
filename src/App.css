@@ -110,7 +110,7 @@
 .playlist li button.active::after {
     content: "♪";
     margin-left: 10px;
-    font-size:1.4rem;
+    font-size:1rem;
 }
 
 
