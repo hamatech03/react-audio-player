@@ -62,7 +62,6 @@
 
 }
 
-/* スクロールバー設定 */
 .playlistCard::-webkit-scrollbar {
     width: 6px;
 }
