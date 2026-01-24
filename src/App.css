@@ -178,7 +178,11 @@
 
 .links ul li {
     list-style: none;
-    margin-left: 10px;
+    opacity: 0.7;
+}
+
+.links ul li:hover {
+    opacity: 1;
 }
 
 .links ul li:active {
@@ -189,6 +193,7 @@
     color: white;
     font-size: small;
 }
+
 
 
 
