@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# music-player
+Reactで作成したシンプルな音楽プレイヤーです。  
+学習目的で制作。個人制作であれば自分の好きな分野に挑戦しようと思ったため音楽プレーヤーを題材にし、自作曲を実装しています。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 使用技術
+* React
+* Vite
+* Typescript
+* react-icons
+* HTML & CSS
 
-Currently, two official plugins are available:
+## 主な機能
+- 楽曲の再生 / 停止
+- シークバーによる再生位置操作
+- 現在時間・残り時間の表示
+- プレイリストからの楽曲選択
+- 再生中アニメーション（レコード盤が回転するイメージ）
+- 外部リンク
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 制作過程で考えていたこと
+* 制作開始段階でまだReact / Typescriptに自信が持てなかったため完成を優先し、機能を最小構成に絞った。
+* そのためreact-router-domは使用せず１ページ構成のシンプルなアプリとした。
+* 結果としてApp.tsxに多くのコードを記述する構成となり、可読性が低下する結果となった。
+* 次回制作時には、コンポーネントごとに責務の分離を行い、可読性、メンテナンス性を意識した設計を行う必要がある。
+* 再生時間や残り時間を `00:00` 形式に変換する処理など、一部理解が不十分な箇所については ChatGPT に生成してもらったコードをそのまま使用している点が現在の課題
+* ChatGPTに生成したもらったコードをそのまま使うのではなく、どのような仕組みで動いているかを理解するために、適宜Google検索やChatGPTへの質問を行った。
+* ただし、完成を優先したため、複雑なコードについては一旦そのまま使用し、今後振り返って理解を深めていく予定である。
 
-## React Compiler
+## おまけ
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+実装している楽曲は、自作のオリジナル楽曲です。  
+一部にサンプリング素材を使用しています。
 
-## Expanding the ESLint configuration
+「(01)」という名前のトラックは、本音楽プレーヤーに実装するために制作しました。  
+シンプルでありながら、聴いていて気持ち良くなるようなドラムパターンを目指しています。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+その他のトラックは、個人制作でゲーム開発を行っている職場の先輩からの依頼で、過去に制作した楽曲です。  
+現在そのゲームはまだ制作途中とのことで、完成を楽しみに待っています。
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+なお、これらの楽曲の公開については、事前に先輩から承諾を得ています。
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+今後も創作意欲が湧いた際には、楽曲の追加実装や、必要に応じて楽曲の削除を行う予定です。
