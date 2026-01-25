@@ -213,8 +213,11 @@ function App() {
   <div className='links'>
     <h5>link</h5>
       <ul>
-        <li><a href="#" target='_blank' rel="noopener noreferrer">soundcloud</a></li>
-        <li><a href="#" target='_blank' rel="noopener noreferrer">github</a></li>
+        <li><a href="https://soundcloud.com/c10lwmu39zjn" 
+        target='_blank' rel="noopener noreferrer">soundcloud</a></li>
+        
+        <li><a href="https://github.com/hamatech03/react-audio-player"
+        target='_blank' rel="noopener noreferrer">github</a></li>
       </ul>
   </div>
 
