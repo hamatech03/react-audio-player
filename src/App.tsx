@@ -48,7 +48,7 @@ function App() {
     {
       id:6,
       title:"宇宙のボスのテーマBGM (loop)",
-      src: "/public/music/宇宙のボスのテーマBGMmaster_128kbps.mp3",
+      src: "/music/宇宙のボスのテーマBGMmaster_128kbps.mp3",
       loop: true,
     },
     {
