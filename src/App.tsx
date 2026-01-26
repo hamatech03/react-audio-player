@@ -156,7 +156,7 @@ function App() {
       onEnded={handleEnded} />
 
       <div className={`record ${isPlaying ? "spinning" : ""}`}>
-        <img src="/images/meimg.png" alt="record" />
+        <img src="/images/meimg.webp" alt="record" />
       </div>
 
 
