@@ -190,7 +190,7 @@ function App() {
     <h3>playlist</h3>
 
     <div className='playlistInfoText'>
-      <p>Select a song</p>
+      <p>Select a track</p>
       <p>(mp3 - 128kbps)</p>
     </div>
 
